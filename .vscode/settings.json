@@ -55,5 +55,20 @@
   "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
-  "C_Cpp_Runner.msvcSecureNoWarnings": false
+  "C_Cpp_Runner.msvcSecureNoWarnings": false,
+  "files.associations": {
+    "float Data Type2.C": "cpp",
+    "Relational and Equality Operators.C": "cpp",
+    " Logical Operators.C": "cpp",
+    "Unary Operators1.C": "cpp",
+    "Unary Operators2.C": "cpp",
+    " Assignment Operator1.C": "cpp",
+    " Assignment Operator2.C": "cpp",
+    "Ternary Operator1.C": "cpp",
+    "Ternary Operator2.C": "cpp",
+    "Cricket Stadium.C": "cpp",
+    " Sports Day Celebration.C": "cpp",
+    "The Newspaper Agency.C": "cpp",
+    "int Data Type5.C": "cpp"
+  }
 }
