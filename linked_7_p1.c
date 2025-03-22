@@ -1,7 +1,8 @@
+// You are using GCC
 #include<stdio.h>
 #include<stdlib.h>
 
-struct node {
+struct node{
     int data;
     int ex;
     struct node* next,*pre;
@@ -22,11 +23,10 @@ NODE *ins(NODE *p,int x,int ex){
         NODE *last=p;
         while(last->next!=NULL){
             last=last->next;
-            }
-            last->next=temp;
-            temp->pre=last;
-            }
-
+        }
+        last->next=temp;
+        temp->pre=last;
+    }
     return p;
 }
 
@@ -35,7 +35,7 @@ void in(int x,int ex){
     temp->data=x;
     temp->ex=ex;
     temp->next=NULL;
-    temp->pre=NULL;
+     temp->pre=NULL;
     if(result==NULL){
         result=temp;
     }
@@ -43,95 +43,84 @@ void in(int x,int ex){
         NODE *last=result;
         while(last->next!=NULL){
             last=last->next;
-            }
-            last->next=temp;
-            temp->pre=last;
-            }
+        }
+        last->next=temp;
+        temp->pre=last;
+    }
 }
+
 
 void pol_add(){
     NODE *p1=pol1,*p2=pol2;
+    
     while(p1!=NULL || p2!=NULL){
-        while (p1!=NULL &&p2!=NULL)
-        {
-            /* code */
-        
-        
-        if(p1->ex==p2->ex){
-            in(p1->data+p2->data,p1->ex);
-            p1=p1->next;
-            p2=p2->next;
-        }
-        else if(p1->ex>p2->ex){
-            in(p1->data,p1->ex);
-            p1=p1->next;
-        }
-        else if(p1->ex<p2->ex){
-            in(p2->data,p2->ex);
-            p2=p2->next;
+        while(p1!=NULL && p2!=NULL){
+            if(p1->ex==p2->ex){
+                in(p1->data+p2->data,p1->ex);
+                p1=p1->next;
+                p2=p2->next;
+            }
+            else if(p1->ex>p2->ex){
+                in(p1->data,p1->ex);
+                p1=p1->next;
+            }
+            else{
+                in(p2->data,p2->ex);
+                p2=p2->next;
             }
         }
         if(pol1!=NULL){
             while(p1!=NULL){
                 in(p1->data,p1->ex);
                 p1=p1->next;
-                }
+            }
         }
         if(pol2!=NULL){
             while(p2!=NULL){
                 in(p2->data,p2->ex);
                 p2=p2->next;
-                }
-                }
-        
+            }
+        }
     }
-    
-
 }
 
 void display(NODE *head){
     NODE *p=head;
-    while (p->next!=NULL)
+    
+    while(p->next!=NULL)
     p=p->next;
+    
     while(p!=NULL){
-        if(p->data!=0){
+        if(p->data){
         printf("%d",p->data);
         
             printf("x^%d",p->ex);
-            }
-            else printf("%d",0);
-            if(p->pre!=NULL){
-                printf("+");
-                }
-                p=p->pre;
-                }
-                printf("\n");
-                
+        }
+        else printf("%d",0);
+        if(p->pre!=NULL){
+            printf(" + ");
+        }
+        p=p->pre;
+    }printf("\n");
 }
+
+
 int main(){
     int x,ex;
-    while (1)
-    {
-        /* code */
+    while(1){
         scanf("%d %d",&x,&ex);
-        if(x==0 && ex==0){
+        if(x==0&&ex==0){
             break;
-            }
-            pol1=ins(pol1,x,ex);
+        }pol1=ins(pol1,x,ex);
     }
-    while (1)
-    {
-        /* code */
+     while(1){
         scanf("%d %d",&x,&ex);
-        if(x==0 && ex==0){
+        if(x==0&&ex==0){
             break;
-            }
-            pol2=ins(pol2,x,ex);
-            
+        }pol2=ins(pol2,x,ex);
     }
     display(pol1);
     display(pol2);
-    printf("Sum of polynomials:\n");
     pol_add();
     display(result);
 }
