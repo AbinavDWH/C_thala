@@ -54,7 +54,7 @@ void free_list(Node* head) {
 }
 
 // Comparison function for qsort (ascending order)
-int compare_nodes(const void* a, const void* b) {
+int  compare_nodes(const void* a, const void* b) {
    const Node* const *node1 = (const Node**)a;
    const Node* const *node2 = (const Node**)b;
     return (*node1)->data - (*node2)->data;
