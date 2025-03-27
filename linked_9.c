@@ -129,7 +129,7 @@ int main(){
     //display(pol);
     //display(po2);
     display(mul);
-    sort(&mul);
+    //sort(&mul);
     add(&mul);
     printf("finally\n");
     display(tol);
