@@ -59,16 +59,18 @@ void add(NODE **temp){
         temp2=temp1->next;
         while(temp2!=NULL){
             if(temp2->ex==ex){
-            sum+=temp2->data;
-        temp1->next=temp2->next;}
-            temp2=temp2->next;
+                sum+=temp2->data;
+                temp1->next=temp2->next;
+                NODE *temp3=temp2;
+                temp2=temp2->next;
+                free(temp3);
+    }
+        else    
+        temp2=temp2->next;
            
         }ins(&tol,sum,ex);
+        temp1=temp1->next;
     }
-    
-
-
-
 }
 
 
