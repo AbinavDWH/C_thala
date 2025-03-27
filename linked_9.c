@@ -54,16 +54,20 @@ void add(NODE **temp){
     NODE *temp1=*temp,*temp2=NULL;
     while (temp1!=NULL)
     {
+        
         int sum=temp1->data;
         int ex=temp1->ex;
         temp2=temp1->next;
+        NODE *chage=temp1;
         while(temp2!=NULL){
             if(temp2->ex==ex){
+                
                 sum+=temp2->data;
-                temp1->next=temp2->next;
+                chage->next=temp2->next;
                 NODE *temp3=temp2;
                 temp2=temp2->next;
                 free(temp3);
+                chage=chage->next;
     }
         else    
         temp2=temp2->next;
