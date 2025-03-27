@@ -41,37 +41,69 @@ void m(NODE *p1,NODE *p2){
     while(temp1!=NULL){
         temp2=p2;
         while(temp2!=NULL){
-            ins(&mul,(temp1->data*temp2->data)/2,temp1->ex+temp2->ex);
+            ins(&mul,(temp1->data*temp2->data),temp1->ex+temp2->ex);
             temp2=temp2->next;
         }
         temp1=temp1->next;
     }
 }
 
+
+
 void add(NODE **temp){
-    NODE *temp1=*temp,*temp2=*temp;
-    for (int i=0;temp1!=NULL;i++)
-    {   temp2=*temp;
-       
-        /* code */
-        for (int j=0;j!=i &&temp2!=NULL;j++)
-        {
-            for(int k=0;k<j && temp2!=NULL;k++)
+    NODE *temp1=*temp,*temp2=NULL;
+    while (temp1!=NULL)
+    {
+        int sum=temp1->data;
+        int ex=temp1->ex;
+        temp2=temp1->next;
+        while(temp2!=NULL){
+            if(temp2->ex==ex){
+            sum+=temp2->data;
+        temp1->next=temp2->next;}
             temp2=temp2->next;
-            /* code */
-            if(temp1->ex==temp2->ex && temp1->data!=-69 && temp2->data!= -69){
-                ins(&tol,temp1->data+temp2->data,temp1->ex);
-                temp1->data=-69;
-                temp2->data=-69;
-            }
-            temp2=temp2->next;
-        }temp1=temp1->next;
-        
+           
+        }ins(&tol,sum,ex);
     }
-    temp1=*temp;
-    while(temp1!=NULL && temp1->data!=-69)
-    ins(&tol,temp1->data,temp1->ex);
     
+
+
+
+}
+
+
+void compare(const void *a,const void *b){
+    const NODE* const *node1=(const NODE**)a;
+    const NODE* const *node2=(const NODE**)b;
+    return (*node1)->ex - (*node2)->ex;
+}
+
+
+void sort(NODE **temp){
+    NODE *h=*temp;
+ int i=0;
+ while (h!=NULL)
+ {
+    /* code */
+    i++;
+    h=h->next;
+ }
+h=*temp;
+ NODE **array=(NODE **)malloc(i*sizeof(NODE *));
+ for(int j=0;j<i;j++){
+    array[j]=h;
+    h=h->next;
+ }
+
+ qsort(array,i,sizeof(NODE *),compare);
+ 
+    *temp=array[0];
+    for(int j=0;j<i-1;j++){
+        array[j]->next=array[j+1];
+    }
+    array[i-1]->next=NULL;
+    free(array);
+
 }
 
 int main(){
@@ -91,6 +123,7 @@ int main(){
     //display(pol);
     //display(po2);
     display(mul);
+    sort(&mul);
     add(&mul);
     printf("finally\n");
     display(tol);
