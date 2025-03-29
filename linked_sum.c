@@ -35,7 +35,7 @@ void dis(NODE *temp){
         temp=temp->next;
     }printf("\n");
 }
-
+/*
 void add(){
     NODE *temp1=head,*temp2=NULL;
     while(temp1!=NULL){
@@ -60,8 +60,31 @@ void add(){
         }ins(&mod,sum,ex);
         temp1=temp1->next;
     }
+} */
+void add(){
+    NODE *temp1=head,*temp2=NULL;
+    while(temp1!=NULL){
+        int sum=temp1->data,ex=temp1->ex;
+        
+        temp2=temp1->next;
+        NODE *change=temp1;
+        while(temp2!=NULL){
+            if(ex==temp2->ex){
+                sum+=temp2->data;
+                NODE *f=temp2;
+                change->next=temp2->next;
+                temp2=temp2->next;
+                change=change->next;
+                free(f);
+            }
+            else{
+                change=change->next;
+                temp2=temp2->next;
+            }
+        }ins(&mod,sum,ex);
+        temp1=temp1->next;
+    }    
 }
-
 
 
 
