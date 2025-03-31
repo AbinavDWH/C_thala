@@ -1,0 +1,222 @@
+Problem Statement
+
+
+Write a program to manage a singly linked list. The program should allow users to perform various operations on the linked list, such as inserting elements at the beginning or end, deleting elements from the beginning or end, inserting before or after a specific value, and deleting elements before or after a specific value. After each operation, the updated linked list should be displayed.
+Input format :
+
+The first line contains an integer choice, representing the operation to perform:
+
+    For choice 1 to create the linked list. The next lines contain space-separated integers, with -1 indicating the end of input.
+    For choice 2 to display the linked list.
+    For choice 3 to insert a node at the beginning. The next line contains an integer data representing the value to insert.
+    For choice 4 to insert a node at the end. The next line contains an integer data representing the value to insert.
+    For choice 5 to insert a node before a specific value. The next line contains two integers: value (existing node value) and data (value to insert).
+    For choice 6 to insert a node after a specific value. The next line contains two integers: value (existing node value) and data (value to insert).
+    For choice 7 to delete a node from the beginning.
+    For choice 8 to delete a node from the end.
+    For choice 9 to delete a node before a specific value. The next line contains an integer value representing the node before which deletion occurs.
+    For choice 10 to delete a node after a specific value. The next line contains an integer value representing the node after which deletion occurs.
+    For choice 11 to exit the program.
+
+Output format :
+
+For choice 1, print "LINKED LIST CREATED".
+
+For choice 2, print the linked list as space-separated integers on a single line. If the list is empty, print "The list is empty".
+
+For choice 3, 4, 5, and 6, print the updated linked list with a message indicating the insertion operation.
+
+For choice 7, 8, 9, and 10, print the updated linked list with a message indicating the deletion operation.
+
+For any operation that is not possible print an appropriate error message such as "Value not found in the list".
+
+For choice 11 terminate the program.
+
+For any invalid option, print "Invalid option! Please try again".
+
+
+Refer to the sample output for formatting specifications.
+Code constraints :
+
+The given test cases will fall under the following constraints:
+
+1 ≤ elements of the list ≤ 100
+
+1 ≤ choice ≤ 11
+Sample test cases :
+Input 1 :
+
+1
+5
+3
+7
+-1
+2
+11
+
+Output 1 :
+
+LINKED LIST CREATED
+5 3 7 
+
+Input 2 :
+
+1
+8
+12
+15
+-1
+2
+3
+2
+4
+20
+11
+
+Output 2 :
+
+LINKED LIST CREATED
+8 12 15 
+The linked list after insertion at the beginning is:
+2 8 12 15 
+The linked list after insertion at the end is:
+2 8 12 15 20 
+
+Input 3 :
+
+1
+1
+2
+3
+-1
+2
+7
+8
+11
+
+Output 3 :
+
+LINKED LIST CREATED
+1 2 3 
+The linked list after deletion from the beginning is:
+2 3 
+The linked list after deletion from the end is:
+2 
+
+Input 4 :
+
+1 
+5
+10
+20
+25
+-1  
+2
+5  
+20
+15
+10
+20
+11 
+
+Output 4 :
+
+LINKED LIST CREATED
+5 10 20 25 
+The linked list after insertion before a value is:
+5 10 15 20 25 
+The linked list after deletion after a value is:
+5 10 15 20 
+
+Input 5 :
+
+1
+9
+14
+18
+22
+-1
+5
+22
+10
+6
+14
+16
+11
+
+Output 5 :
+
+LINKED LIST CREATED
+The linked list after insertion before a value is:
+9 14 18 10 22 
+The linked list after insertion after a value is:
+9 14 16 18 10 22 
+
+Input 6 :
+
+1
+20
+100
+-1
+2
+5
+10
+15
+11
+
+Output 6 :
+
+LINKED LIST CREATED
+20 100 
+Value not found in the list
+The linked list after insertion before a value is:
+20 100 
+
+Input 7 :
+
+1
+2
+4
+6
+-1
+2
+6
+8
+12
+11
+
+Output 7 :
+
+LINKED LIST CREATED
+2 4 6 
+Value not found in the list
+The linked list after insertion after a value is:
+2 4 6 
+
+Input 8 :
+
+1
+7
+14
+21
+28
+35
+-1
+2
+9
+21
+17
+11
+
+Output 8 :
+
+LINKED LIST CREATED
+7 14 21 28 35 
+The linked list after deletion before a value is:
+14 21 28 35 
+Invalid option! Please try again
+
+Input 9 :
+
+2
+11
