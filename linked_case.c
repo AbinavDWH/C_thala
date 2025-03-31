@@ -110,7 +110,49 @@ void delbegpos(int pos){
     if(head->data==pos){
         printf("illa");
     }
+    else{
+        NODE *temp=head->next->next,*pre=head;
+        if(head->next->data==pos){
+        head=head->next;
+        return;
+    }
+        while (temp!=NULL)
+        {
+            
+            /* code */
+            if(temp->data==pos){
+                break;
+            }
+            temp=temp->next;
+            pre=pre->next;
+        }
+        if(temp==NULL){
+            return;
+        }
+        pre->next=temp;
+        
+    }
 
+}
+
+void delendpos(int pos){
+    NODE *temp=head;
+    while(temp->next!=NULL){temp=temp->next;
+    }
+    if(temp->data==pos)
+    printf("nah");
+    else{
+        temp=head;
+        while(temp->next->next!=NULL){
+            if(temp->data==pos){
+                break;
+            }
+            temp=temp->next;
+            }
+            if(temp->next->next==NULL)
+            return;
+            temp->next=temp->next->next;
+    }
 }
 
 void display(){
@@ -183,6 +225,22 @@ int main(){
             display();
         }
         break;
+        case 9:
+        if(flag){
+            scanf("%d",&ele);
+            delbegpos(ele);
+            display();
+        }break;
+        case 10:
+        if(flag){
+            scanf("%d",&ele);
+            delendpos(ele);
+        }break;
+        case 11:
+        return 0;
+        break;
+        default:
+        printf("oombu");
     }
 }
 }
