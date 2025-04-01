@@ -99,9 +99,9 @@ void delbegpos(int pos){
         return;
     }
     else{
-        NODE *temp=head->next->next,*pre=head;
-        if(head->next->data==pos){
-            head=head->next;
+        NODE *temp=head->next->next->next,*pre=head;
+        if(head->next->next->data==pos){
+            head=head->next->next;
             return;
         }
         while(temp!=NULL){
@@ -219,6 +219,7 @@ int main(){
         if(flag){
             scanf("%d",&ele);
             delbegpos(ele);
+            printf("The linked list after deletion before a value is:\n");
             display();
         }break;
         case 10:
