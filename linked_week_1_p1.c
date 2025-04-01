@@ -48,7 +48,7 @@ void insertbegpos(int pos,int x){
             temp=temp->next;
         }
         if(pre==NULL){
-            printf(" ");
+            printf("Value not found in the list\n");
         }
         else{
              pre->next=nn;
