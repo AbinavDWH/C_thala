@@ -35,19 +35,21 @@ void insertbeg(int x){
 
 void insertbegpos(int pos,int x){
     NODE *nn=(NODE *)malloc(sizeof(NODE));
+    nn->data=x;
     nn->next=NULL;
     if(head->data==pos){
         nn->next=head;
         head=nn;
     }
     else{
-        NODE *temp=head,*pre=NULL;
+        NODE *temp=head->next,*pre=head;
         while(temp!=NULL){
             if(temp->data==pos)
-            pre=temp;
+            break;
+            pre=pre->next;
             temp=temp->next;
         }
-        if(pre==NULL){
+        if(pre->next==NULL){
             printf("Value not found in the list\n");
         }
         else{
@@ -95,46 +97,65 @@ void delend(){
 }
 
 void delbegpos(int pos){
-    if(head->data==pos){
+    if (head == NULL || head->next == NULL) {
+        printf("List is too short to delete before %d.\n", pos);
         return;
     }
-    else{
-        NODE *temp=head->next->next->next,*pre=head;
-        if(head->next->next->data==pos){
-            head=head->next->next;
-            return;
-        }
-        while(temp!=NULL){
-            if(temp->data==pos){
-                break;
-            }
-            temp=temp->next;
-            pre=pre->next;
-        }
-        if(temp==NULL)
+
+    
+    if (head->next->next->data == pos) {
+        NODE* temp = head;
+        head = head->next;
+        free(temp);
         return;
-        pre->next=temp;
     }
+
+    NODE *prev = NULL, *current = head, *nextNode = head->next;
+
+    
+    while (nextNode != NULL && nextNode->data != pos) {
+        prev = current;
+        current = nextNode;
+        nextNode = nextNode->next;
+    }
+
+    
+    if (nextNode == NULL) {
+        printf("Element %d not found or has no preceding node to delete.\n", pos);
+        return;
+    }
+
+   
+    prev->next = nextNode;
+    free(current);
 }
 
-void delendpos(int pos){
-    NODE *temp=head;
-    while(temp->next!=NULL){temp=temp->next;
-    }
-    if(temp->data==pos)
-    return;
-    else{
-        temp=head;
-        while(temp->next->next!=NULL){
-            if(temp->data==pos){
-                break;
-            }
-            temp=temp->next;
-        }if(temp->next->next==NULL)
+void delendpos(int x){
+    if (head == NULL || head->next == NULL) {
+        printf("List is too short to delete the next node.\n");
         return;
-        temp->next=temp->next->next;
     }
+    NODE* temp = head;
+
+   
+    while (temp != NULL && temp->data != x) {
+        temp = temp->next;
+    }
+
+    
+    if (temp == NULL || temp->next == NULL) {
+        printf("No next node to delete for element %d.\n", x);
+        return;
+    }
+
+    
+    NODE* node_to_delete = temp->next;
+    temp->next = node_to_delete->next;
+    free(node_to_delete);
 }
+
+
+
 
 void display(){
     NODE *temp=head;
@@ -226,6 +247,8 @@ int main(){
         if(flag){
             scanf("%d",&ele);
             delendpos(ele);
+            printf("The linked list after deletion after a value is:\n");
+            display();
         }break;
         case 11: return 0;
         break;
