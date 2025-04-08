@@ -70,14 +70,25 @@ void postorder(TREE *temp){
 void del(int ele){
     TREE *temp=root;
     while(1){
+        if(temp==NULL) break;
         if(temp->data>ele){
             temp=temp->left;
         }
         else if(temp->data==ele){
-            temp->left->right=temp->right;
-            temp=temp->left;
-            break;
+            if(temp->left==NULL && temp->right!=NULL){
+                temp=temp->right;
+               // temp->right=NULL;
+                break;
+            
         }
+        else if(temp->left!=NULL && temp->right==NULL){
+        
+            temp=temp->left;}
+            else if(temp->left==NULL && temp->right==NULL){
+                temp=NULL;
+                break;
+                }
+    }
         else{
             temp=temp->right;
         }
